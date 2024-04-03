@@ -467,7 +467,6 @@ internal class NullableDateTimePickerContent : ContentView
         return System.Globalization.ISOWeek.GetWeekOfYear(date);
     }
 
-
     private void UpdateCurrentDateAndControls(DateTime? date)
     {
         _currentDate = date ?? DateTime.Now;
@@ -495,7 +494,7 @@ internal class NullableDateTimePickerContent : ContentView
            if (date != null && date.HasValue)
            {
                if (_options.Mode == PickerModes.Date || _options.Mode == PickerModes.DateTime)
-                   selectedDateText = date.Value.ToString("ddd, MMM d");
+                   selectedDateText = date.Value.ToString("ddd, dd.MM.yyyy");
 
                if (_options.Mode == PickerModes.Time)
                {
@@ -835,7 +834,7 @@ internal class NullableDateTimePickerContent : ContentView
             FontAttributes = FontAttributes.Bold,
             VerticalOptions = LayoutOptions.Center,
             IsEnabled = _options.Mode != PickerModes.Time,  //Click skipping in time mode
-            IsVisible = _options.Mode != PickerModes.Time
+            IsVisible = false
         };
         _yearsPicker.SelectedIndexChanged += OnYearsPickerIndexChanged;
 
@@ -1037,13 +1036,13 @@ internal class NullableDateTimePickerContent : ContentView
         Grid toolButtonsGrid = new()
         {
             Margin = 0,
-            Padding = new Thickness(5, 0),
+            Padding = new Thickness(0, 0),
             HorizontalOptions = LayoutOptions.Fill,
             VerticalOptions = LayoutOptions.Center,
             ColumnDefinitions =
             {
-                new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) },
-                new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) },
+                new ColumnDefinition { Width = new GridLength(1, GridUnitType.Auto) },
+                new ColumnDefinition { Width = new GridLength(1, GridUnitType.Auto) },
                 new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) }
             }
         };

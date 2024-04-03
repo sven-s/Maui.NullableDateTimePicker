@@ -11,7 +11,7 @@
                 {
                     Setters = {
                             new Setter { Property = VisualElement.BackgroundColorProperty, Value = Colors.Transparent },
-                            new Setter { Property = Button.TextColorProperty, Value = Application.Current.RequestedTheme == AppTheme.Dark ? Colors.White : Colors.Black },
+                            new Setter { Property = Button.TextColorProperty, Value =  Colors.Black},
                             new Setter { Property = View.MarginProperty, Value = new Thickness(0) },
                             new Setter { Property = Button.PaddingProperty, Value = new Thickness(0) },
                             new Setter { Property = Button.FontSizeProperty, Value = 12 },
@@ -85,8 +85,7 @@
                     _selectedDayStyle.Setters.Add(new Setter
                     {
                         Property = VisualElement.BackgroundColorProperty,
-                        Value = Application.Current.RequestedTheme == AppTheme.Dark
-                        ? Color.FromRgba("#6e5df2") : Colors.Blue
+                        Value =  Color.FromRgba("#02137A")
                     });
                 }
 
@@ -105,7 +104,7 @@
                             new Setter { Property = View.HorizontalOptionsProperty, Value = LayoutOptions.Center },
                             new Setter { Property = View.VerticalOptionsProperty, Value = LayoutOptions.Center},
                             new Setter { Property = Label.FontSizeProperty, Value = 12 },
-                            new Setter { Property = Label.TextColorProperty, Value =  Color.FromRgba("#6e5df2") },
+                            new Setter { Property = Label.TextColorProperty, Value =  Color.FromRgba("#02137A") },
                             new Setter { Property = Label.FontAttributesProperty, Value = FontAttributes.Bold },
                             new Setter { Property = Label.MarginProperty, Value = 0 },
                             new Setter { Property = Label.PaddingProperty, Value = 0 },
@@ -152,7 +151,7 @@
                             new Setter { Property = View.HorizontalOptionsProperty, Value = LayoutOptions.Center },
                             new Setter { Property = View.VerticalOptionsProperty, Value = LayoutOptions.Center },
                             new Setter { Property = View.MarginProperty, Value = new Thickness(10, 0, 10, 0) },
-                            new Setter { Property = Button.TextColorProperty, Value = Color.FromRgba("#6e5df2") },
+                            new Setter { Property = Button.TextColorProperty, Value = Color.FromRgba("#02137A") },
                             new Setter { Property = Button.FontAttributesProperty, Value = FontAttributes.Bold }
                         }
                 };
