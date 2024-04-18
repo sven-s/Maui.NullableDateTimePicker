@@ -6,7 +6,7 @@
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Title>Maui.NullableDateTimePicker</Title>
 		<Authors>Sebarslan</Authors>
-		<Description>Nullable and clerable datetime picker component for Maui</Description>
+		<Description>Nullable and clearable datetime picker component for Maui</Description>
 		<RepositoryUrl>https://github.com/sebarslan/Maui.NullableDateTimePicker</RepositoryUrl>
 		<PackageProjectUrl>https://github.com/sebarslan/Maui.NullableDateTimePicker</PackageProjectUrl>
 		<PackageTags>nullable clerable datepicker,maui,cross-platform,.net,ios,android,windows,mac catalyst</PackageTags>
@@ -19,7 +19,8 @@
 		<PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
 		<AssemblyVersion>2.2.0.0</AssemblyVersion>
 		<Version>2.2.0</Version>
-
+		<Nullable>enable</Nullable>
+		<RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">11.0</SupportedOSPlatformVersion>
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">21.0</SupportedOSPlatformVersion>
 	</PropertyGroup>
