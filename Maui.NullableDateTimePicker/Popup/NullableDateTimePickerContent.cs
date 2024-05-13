@@ -1241,7 +1241,7 @@ internal class NullableDateTimePickerContent : ContentView
     {
         // Update the hour value based on the AM/PM option
 
-        if (amPmOption.ToUpper() == "AM")
+        if (amPmOption.ToUpperInvariant() == "AM")
         {
             if (currentHour > 12)
             {
@@ -1253,7 +1253,7 @@ internal class NullableDateTimePickerContent : ContentView
             }
         }
 
-        if (amPmOption.ToUpper() == "PM")
+        if (amPmOption.ToUpperInvariant() == "PM")
         {
 
             if (currentHour <= 12)
