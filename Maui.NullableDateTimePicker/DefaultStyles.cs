@@ -85,7 +85,7 @@
                     _selectedDayStyle.Setters.Add(new Setter
                     {
                         Property = VisualElement.BackgroundColorProperty,
-                        Value =  Color.FromRgba("#02137A")
+                        Value =  Color.FromRgba("#1473C8")
                     });
                 }
 
@@ -104,7 +104,7 @@
                             new Setter { Property = View.HorizontalOptionsProperty, Value = LayoutOptions.Center },
                             new Setter { Property = View.VerticalOptionsProperty, Value = LayoutOptions.Center},
                             new Setter { Property = Label.FontSizeProperty, Value = 12 },
-                            new Setter { Property = Label.TextColorProperty, Value =  Color.FromRgba("#02137A") },
+                            new Setter { Property = Label.TextColorProperty, Value =  Color.FromRgba("#0F3549") },
                             new Setter { Property = Label.FontAttributesProperty, Value = FontAttributes.Bold },
                             new Setter { Property = Label.MarginProperty, Value = 0 },
                             new Setter { Property = Label.PaddingProperty, Value = 0 },
@@ -151,7 +151,7 @@
                             new Setter { Property = View.HorizontalOptionsProperty, Value = LayoutOptions.Center },
                             new Setter { Property = View.VerticalOptionsProperty, Value = LayoutOptions.Center },
                             new Setter { Property = View.MarginProperty, Value = new Thickness(10, 0, 10, 0) },
-                            new Setter { Property = Button.TextColorProperty, Value = Color.FromRgba("#02137A") },
+                            new Setter { Property = Button.TextColorProperty, Value = Color.FromRgba("#0F3549") },
                             new Setter { Property = Button.FontAttributesProperty, Value = FontAttributes.Bold }
                         }
                 };
