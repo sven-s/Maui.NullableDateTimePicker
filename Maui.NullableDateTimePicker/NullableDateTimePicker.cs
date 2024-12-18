@@ -88,7 +88,7 @@ public class NullableDateTimePicker : ContentView
 
         var dateTimePickerStackLayout = new StackLayout
         {
-            Margin = 0,
+            Margin = 5,
             Padding = 0,
             BackgroundColor = Colors.Transparent
         };

@@ -85,7 +85,7 @@
                     _selectedDayStyle.Setters.Add(new Setter
                     {
                         Property = VisualElement.BackgroundColorProperty,
-                        Value =  Color.FromRgba("#1473C8")
+                        Value = Color.FromRgba("#0F3549")
                     });
                 }
 
