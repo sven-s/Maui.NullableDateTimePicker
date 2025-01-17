@@ -4,12 +4,12 @@
     "net9.0": {
       "CommunityToolkit.Maui": {
         "type": "Direct",
-        "requested": "[10.0.0, )",
-        "resolved": "10.0.0",
-        "contentHash": "Yh4CAqewB1Voq+RwCeWP7jxD10MAkjeM3WRkhsr5KMYzuJleM/H0wM2aLIuODVnO787NM/wleI7JFOf9EU1Dbw==",
+        "requested": "[11.0.0, )",
+        "resolved": "11.0.0",
+        "contentHash": "NjGc6XzGjYl1GvV6HHpLqReWDJlER7yz8HxcC1n/vKQNDVn1fB+MSoY59d9gaut65Aa5WDYnS4j6BF0L97CxyQ==",
         "dependencies": {
-          "CommunityToolkit.Maui.Core": "10.0.0",
-          "Microsoft.Maui.Controls": "[9.0.21, 10.0.0)"
+          "CommunityToolkit.Maui.Core": "11.0.0",
+          "Microsoft.Maui.Controls": "[9.0.30, 10.0.0)"
         }
       },
       "Microsoft.Maui.Controls": {
@@ -38,11 +38,11 @@
       },
       "CommunityToolkit.Maui.Core": {
         "type": "Transitive",
-        "resolved": "10.0.0",
-        "contentHash": "kbozkLBRArk4GWpfYYa6WAnu3jYFEyPKlkR+9cgyYqM6wrtNlRMS/uXXRo8IhN8qCrrvlxBerQnK4gQmMW0cJg==",
+        "resolved": "11.0.0",
+        "contentHash": "5G7LJTrySg+YcnDASScmBOuQNrYzI2nBWF+4J2rK0NKt/3ArR91zOAbKvBe9EKpUtUqVprb7+RcL9djEhukh/g==",
         "dependencies": {
-          "Microsoft.Maui.Core": "[9.0.21, 10.0.0)",
-          "Microsoft.Maui.Essentials": "[9.0.21, 10.0.0)"
+          "Microsoft.Maui.Core": "[9.0.30, 10.0.0)",
+          "Microsoft.Maui.Essentials": "[9.0.30, 10.0.0)"
         }
       },
       "Microsoft.Extensions.Configuration": {
@@ -170,16 +170,15 @@
         "contentHash": "rJtkoRYWmkBPVxpvrWYvACYfrCqW98ilio6M5wUqu8X7AzcxVp1R17b5XLgFUyJKkmolyqibO06C6wOV3kOOig=="
       }
     },
-    "net9.0/iossimulator-x64": {},
     "net9.0-android35.0": {
       "CommunityToolkit.Maui": {
         "type": "Direct",
-        "requested": "[10.0.0, )",
-        "resolved": "10.0.0",
-        "contentHash": "Yh4CAqewB1Voq+RwCeWP7jxD10MAkjeM3WRkhsr5KMYzuJleM/H0wM2aLIuODVnO787NM/wleI7JFOf9EU1Dbw==",
+        "requested": "[11.0.0, )",
+        "resolved": "11.0.0",
+        "contentHash": "NjGc6XzGjYl1GvV6HHpLqReWDJlER7yz8HxcC1n/vKQNDVn1fB+MSoY59d9gaut65Aa5WDYnS4j6BF0L97CxyQ==",
         "dependencies": {
-          "CommunityToolkit.Maui.Core": "10.0.0",
-          "Microsoft.Maui.Controls": "[9.0.21, 10.0.0)"
+          "CommunityToolkit.Maui.Core": "11.0.0",
+          "Microsoft.Maui.Controls": "[9.0.30, 10.0.0)"
         }
       },
       "Microsoft.Maui.Controls": {
@@ -208,11 +207,11 @@
       },
       "CommunityToolkit.Maui.Core": {
         "type": "Transitive",
-        "resolved": "10.0.0",
-        "contentHash": "kbozkLBRArk4GWpfYYa6WAnu3jYFEyPKlkR+9cgyYqM6wrtNlRMS/uXXRo8IhN8qCrrvlxBerQnK4gQmMW0cJg==",
+        "resolved": "11.0.0",
+        "contentHash": "5G7LJTrySg+YcnDASScmBOuQNrYzI2nBWF+4J2rK0NKt/3ArR91zOAbKvBe9EKpUtUqVprb7+RcL9djEhukh/g==",
         "dependencies": {
-          "Microsoft.Maui.Core": "[9.0.21, 10.0.0)",
-          "Microsoft.Maui.Essentials": "[9.0.21, 10.0.0)"
+          "Microsoft.Maui.Core": "[9.0.30, 10.0.0)",
+          "Microsoft.Maui.Essentials": "[9.0.30, 10.0.0)"
         }
       },
       "GoogleGson": {
@@ -1315,16 +1314,15 @@
         }
       }
     },
-    "net9.0-android35.0/iossimulator-x64": {},
     "net9.0-ios18.0": {
       "CommunityToolkit.Maui": {
         "type": "Direct",
-        "requested": "[10.0.0, )",
-        "resolved": "10.0.0",
-        "contentHash": "Yh4CAqewB1Voq+RwCeWP7jxD10MAkjeM3WRkhsr5KMYzuJleM/H0wM2aLIuODVnO787NM/wleI7JFOf9EU1Dbw==",
+        "requested": "[11.0.0, )",
+        "resolved": "11.0.0",
+        "contentHash": "NjGc6XzGjYl1GvV6HHpLqReWDJlER7yz8HxcC1n/vKQNDVn1fB+MSoY59d9gaut65Aa5WDYnS4j6BF0L97CxyQ==",
         "dependencies": {
-          "CommunityToolkit.Maui.Core": "10.0.0",
-          "Microsoft.Maui.Controls": "[9.0.21, 10.0.0)"
+          "CommunityToolkit.Maui.Core": "11.0.0",
+          "Microsoft.Maui.Controls": "[9.0.30, 10.0.0)"
         }
       },
       "Microsoft.Maui.Controls": {
@@ -1359,11 +1357,11 @@
       },
       "CommunityToolkit.Maui.Core": {
         "type": "Transitive",
-        "resolved": "10.0.0",
-        "contentHash": "kbozkLBRArk4GWpfYYa6WAnu3jYFEyPKlkR+9cgyYqM6wrtNlRMS/uXXRo8IhN8qCrrvlxBerQnK4gQmMW0cJg==",
+        "resolved": "11.0.0",
+        "contentHash": "5G7LJTrySg+YcnDASScmBOuQNrYzI2nBWF+4J2rK0NKt/3ArR91zOAbKvBe9EKpUtUqVprb7+RcL9djEhukh/g==",
         "dependencies": {
-          "Microsoft.Maui.Core": "[9.0.21, 10.0.0)",
-          "Microsoft.Maui.Essentials": "[9.0.21, 10.0.0)"
+          "Microsoft.Maui.Core": "[9.0.30, 10.0.0)",
+          "Microsoft.Maui.Essentials": "[9.0.30, 10.0.0)"
         }
       },
       "Microsoft.Extensions.Configuration": {
@@ -1490,7 +1488,6 @@
         "resolved": "9.0.30",
         "contentHash": "rJtkoRYWmkBPVxpvrWYvACYfrCqW98ilio6M5wUqu8X7AzcxVp1R17b5XLgFUyJKkmolyqibO06C6wOV3kOOig=="
       }
-    },
-    "net9.0-ios18.0/iossimulator-x64": {}
+    }
   }
 }
