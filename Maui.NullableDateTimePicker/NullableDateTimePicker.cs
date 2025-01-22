@@ -15,7 +15,7 @@ public class NullableDateTimePicker : ContentView
     private Border _dateTimePickerBorder;
     private bool isSetIconCalledForFirstTime = false;
     const double defaultHeightRequest = 40;
-    static Page Page => Application.Current?.MainPage ?? throw new NullReferenceException();
+    static Page Page => Application.Current?.Windows.FirstOrDefault()?.Page ?? throw new NullReferenceException();
 
     public NullableDateTimePicker()
     {
