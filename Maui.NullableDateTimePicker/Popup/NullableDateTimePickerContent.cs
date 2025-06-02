@@ -3,7 +3,7 @@ using System.Globalization;
 
 namespace Maui.NullableDateTimePicker;
 
-internal class NullableDateTimePickerContent : ContentView
+internal class NullableDateTimePickerContent : ContentView, IDisposable
 {
     internal event EventHandler<EventArgs> OkButtonClicked;
     internal event EventHandler<EventArgs> ClearButtonClicked;
@@ -41,6 +41,7 @@ internal class NullableDateTimePickerContent : ContentView
     private ScrollView _scrollView;
     List<PickerItem> _hours = null;
     List<PickerItem> _minutes = null;
+    private bool _disposed = false;
 
 
     internal NullableDateTimePickerContent(INullableDateTimePickerOptions options)
@@ -959,7 +960,6 @@ internal class NullableDateTimePickerContent : ContentView
                 TitleColor = _options.ForeColor ?? (Application.Current.RequestedTheme == AppTheme.Dark ? Colors.White : Colors.Black),
                 FontSize = 14,
                 HeightRequest = 40,
-                ItemDisplayBinding = new Binding("Text"),
                 HorizontalOptions = LayoutOptions.Center,
                 VerticalOptions = LayoutOptions.Center,
                 FontAttributes = FontAttributes.Bold,
@@ -985,7 +985,6 @@ internal class NullableDateTimePickerContent : ContentView
                 TitleColor = _options.ForeColor ?? (Application.Current.RequestedTheme == AppTheme.Dark ? Colors.White : Colors.Black),
                 FontSize = 14,
                 HeightRequest = 40,
-                ItemDisplayBinding = new Binding("Text"),
                 HorizontalOptions = LayoutOptions.Center,
                 VerticalOptions = LayoutOptions.Center,
                 FontAttributes = FontAttributes.Bold,
@@ -1268,5 +1267,125 @@ internal class NullableDateTimePickerContent : ContentView
         }
 
         return currentHour;
+    }
+
+    public void Dispose()
+    {
+        Dispose(true);
+        GC.SuppressFinalize(this);
+    }
+
+    ~NullableDateTimePickerContent()
+    {
+        Dispose(false);
+    }
+
+    protected virtual void Dispose(bool disposing)
+    {
+        if (!_disposed)
+        {
+            if (disposing)
+            {
+                // Unsubscribe from events
+                if (_yearsPicker != null)
+                    _yearsPicker.SelectedIndexChanged -= OnYearsPickerIndexChanged;
+                if (_previousMonthButton != null)
+                    _previousMonthButton.Clicked -= OnPreviousMonthButtonClicked;
+                if (_nextMonthButton != null)
+                    _nextMonthButton.Clicked -= OnNextMonthButtonClicked;
+                if (_monthYearLabel != null && _monthYearLabel.GestureRecognizers.Any())
+                    _monthYearLabel.GestureRecognizers.Clear(); // Assuming single tap recognizer as per code
+                if (_hoursPicker != null)
+                {
+                    _hoursPicker.SelectedIndexChanged -= OnHoursPickerIndexChanged;
+                    _hoursPicker.ItemsSource = null;
+                }
+                if (_minutesPicker != null)
+                {
+                    _minutesPicker.SelectedIndexChanged -= OnMinutesPickerIndexChanged;
+                    _minutesPicker.ItemsSource = null;
+                }
+                if (_amPmPicker != null)
+                {
+                    _amPmPicker.SelectedIndexChanged -= OnAmPmPickerIndexChanged;
+                    _amPmPicker.Items.Clear(); // Use Items.Clear() as it uses Items.Add()
+                }
+                if (_clearButton != null)
+                    _clearButton.Clicked -= OnClearButtonClicked;
+                if (_cancelButton != null)
+                    _cancelButton.Clicked -= OnCancelButtonClicked;
+                if (_okButton != null)
+                    _okButton.Clicked -= OnOkButtonClicked;
+
+                if (_dayButtons != null)
+                {
+                    foreach (var button in _dayButtons)
+                    {
+                        button.Clicked -= OnDayButtonTapped;
+                    }
+                    _dayButtons.Clear();
+                }
+
+                // For dynamically created buttons/labels in BuildCalendar and CreateMonthListGrid
+                // It's tricky as they are created on demand.
+                // A better approach might be to clear children of _daysGrid and _monthListGrid,
+                // which should help in unreferencing them if MAUI handles it correctly.
+                // Or, ensure event handlers are removed when these grids are rebuilt.
+
+                if (_daysGrid != null)
+                {
+                    foreach (var child in _daysGrid.Children.ToList()) // ToList to avoid modification during iteration issues
+                    {
+                        if (child is Button dayButton)
+                        {
+                            dayButton.Clicked -= OnLastMonthDayButtonTapped;
+                            dayButton.Clicked -= OnNextMonthDayButtonTapped;
+                        }
+                    }
+                    _daysGrid.Clear();
+                }
+
+                if (_monthListGrid != null)
+                {
+                     foreach (var child in _monthListGrid.Children.ToList())
+                    {
+                        if (child is Label monthLabel && monthLabel.GestureRecognizers.Any())
+                        {
+                            monthLabel.GestureRecognizers.Clear();
+                        }
+                    }
+                    _monthListGrid.Clear();
+                }
+
+
+                // Nullify other potentially large objects or clear collections
+                _calendarGrid?.Clear();
+                _mainGrid?.Clear();
+                _scrollView = null; // Content will be nulled by MAUI when popup closes
+
+                _selectedDate = null;
+                _hours?.Clear();
+                _hours = null;
+                _minutes?.Clear();
+                _minutes = null;
+
+                // Nullify the picker references themselves after cleaning them up
+                _yearsPicker = null;
+                _previousMonthButton = null;
+                _nextMonthButton = null;
+                _monthYearLabel = null;
+                _hoursPicker = null;
+                _minutesPicker = null;
+                _amPmPicker = null;
+                _clearButton = null;
+                _cancelButton = null;
+                _okButton = null;
+                _daysGrid = null; 
+                _monthListGrid = null;
+                _calendarGrid = null;
+                _mainGrid = null;
+            }
+            _disposed = true;
+        }
     }
 }

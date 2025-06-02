@@ -6,7 +6,7 @@ using System.Reflection;
 namespace Maui.NullableDateTimePicker;
 
 // All the code in this file is included in all platforms.
-public class NullableDateTimePicker : ContentView
+public class NullableDateTimePicker : ContentView, IDisposable
 {
     public event EventHandler<DateTimeChangedEventArgs> NullableDateTimeChanged;
     private Grid _dateTimePickerGrid;
@@ -16,6 +16,11 @@ public class NullableDateTimePicker : ContentView
     private bool isSetIconCalledForFirstTime = false;
     const double defaultHeightRequest = 40;
     static Page Page => Application.Current?.Windows.FirstOrDefault()?.Page ?? throw new NullReferenceException();
+
+    private TapGestureRecognizer _tapGestureRecognizer;
+    private BoxView _clickableView;
+    private bool _disposed = false;
+    private EventHandler _loadedEventHandler;
 
     public NullableDateTimePicker()
     {
@@ -69,21 +74,18 @@ public class NullableDateTimePicker : ContentView
         _dateTimePickerGrid.SetColumn(_dateTimePickerIcon, 1);
         _dateTimePickerGrid.Add(_dateTimePickerIcon);
 
-        var clickableView = new BoxView { Color = Colors.Transparent, Background = Colors.Transparent, BackgroundColor = Colors.Transparent, HorizontalOptions = LayoutOptions.Fill };
-        _dateTimePickerGrid.SetColumn(clickableView, 0);
-        _dateTimePickerGrid.SetColumnSpan(clickableView, 2);
-        _dateTimePickerGrid.Add(clickableView);
+        _clickableView = new BoxView { Color = Colors.Transparent, Background = Colors.Transparent, BackgroundColor = Colors.Transparent, HorizontalOptions = LayoutOptions.Fill };
+        _dateTimePickerGrid.SetColumn(_clickableView, 0);
+        _dateTimePickerGrid.SetColumnSpan(_clickableView, 2);
+        _dateTimePickerGrid.Add(_clickableView);
 
-        TapGestureRecognizer tapGestureRecognizer = new TapGestureRecognizer
+        _tapGestureRecognizer = new TapGestureRecognizer
         {
             NumberOfTapsRequired = 1
         };
-        tapGestureRecognizer.Tapped += (s, e) =>
-        {
-            OnDatePickerClicked(s, e);
-        };
+        _tapGestureRecognizer.Tapped += OnDatePickerClicked;
 
-        clickableView.GestureRecognizers.Add(tapGestureRecognizer);
+        _clickableView.GestureRecognizers.Add(_tapGestureRecognizer);
 
 
         var dateTimePickerStackLayout = new StackLayout
@@ -116,13 +118,16 @@ public class NullableDateTimePicker : ContentView
             VerticalOptions = LayoutOptions.Fill
         };
 
-        this.Loaded += (s, e) =>
-        {
-            if (!isSetIconCalledForFirstTime)
-                SetCalendarIcon();
-        };
+        _loadedEventHandler = OnDateTimePickerLoaded;
+        this.Loaded += _loadedEventHandler;
 
         Content = _dateTimePickerBorder;
+    }
+
+    private void OnDateTimePickerLoaded(object sender, EventArgs e)
+    {
+        if (!isSetIconCalledForFirstTime)
+            SetCalendarIcon();
     }
 
     public static async Task<object> OpenCalendarAsync(INullableDateTimePickerOptions options)
@@ -941,5 +946,47 @@ BindableProperty.Create(nameof(ToolButtonsStyle), typeof(Style), typeof(Nullable
             }
         }
         return dateValue;
+    }
+
+    public void Dispose()
+    {
+        Dispose(true);
+        GC.SuppressFinalize(this);
+    }
+
+    ~NullableDateTimePicker()
+    {
+        Dispose(false);
+    }
+
+    protected virtual void Dispose(bool disposing)
+    {
+        if (!_disposed)
+        {
+            if (disposing)
+            {
+                if (_loadedEventHandler != null)
+                {
+                    this.Loaded -= _loadedEventHandler;
+                }
+
+                if (_tapGestureRecognizer != null)
+                {
+                    _tapGestureRecognizer.Tapped -= OnDatePickerClicked;
+                    if (_clickableView != null && _clickableView.GestureRecognizers.Contains(_tapGestureRecognizer))
+                    {
+                        _clickableView.GestureRecognizers.Remove(_tapGestureRecognizer);
+                    }
+                }
+
+                _clickableView = null;
+                _tapGestureRecognizer = null;
+                _dateTimePickerEntry = null;
+                _dateTimePickerIcon = null;
+                _dateTimePickerGrid = null;
+                _dateTimePickerBorder = null;
+            }
+            _disposed = true;
+        }
     }
 }

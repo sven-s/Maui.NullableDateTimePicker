@@ -83,6 +83,8 @@ namespace Maui.NullableDateTimePicker
             {
                 if (disposing)
                 {
+                    this.Opened -= _content.NullableDateTimePickerPopupOpened;
+                    _content?.Dispose();
                     _content = null;
                 }
                 _disposed = true;

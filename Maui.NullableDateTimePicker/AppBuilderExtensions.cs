@@ -10,12 +10,14 @@ namespace Maui.NullableDateTimePicker
 	        builder.UseMauiCommunityToolkit();
 #pragma warning restore CA1416
 #else
-            builder.UseMauiCommunityToolkit(options =>
+#pragma warning disable CA1416
+	        builder.UseMauiCommunityToolkit(options =>
                  {
                      options.SetShouldSuppressExceptionsInConverters(true);
                      options.SetShouldSuppressExceptionsInBehaviors(true);
                      options.SetShouldSuppressExceptionsInAnimations(true);
                  });
+#pragma warning restore CA1416
 #endif
             return builder;
         }
