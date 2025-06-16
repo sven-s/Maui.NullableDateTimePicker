@@ -37,8 +37,8 @@
 	
 	<ItemGroup Condition="$(TargetFramework.StartsWith('net9.0'))">
 		<PackageReference Include="CommunityToolkit.Maui" Version="11.2.0" />
-		<PackageReference Include="Microsoft.Maui.Controls" Version="9.0.70" />
-		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="9.0.70" />
+		<PackageReference Include="Microsoft.Maui.Controls" Version="9.0.80" />
+		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="9.0.80" />
 	</ItemGroup>
 
 	<ItemGroup>
